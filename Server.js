@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 const express= require('express');
 const app = express();
 const db = require('./db');
 const Person = require('./person');
+
 
 ////////////////////////////////////////////////////
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 /////////////////////////////////////////////////////
-
+const PORT =process.env.PORT
 app.get("/",(req,res)=>{
     res.send("how can i help you ")
 });
@@ -62,8 +64,10 @@ app.get('/idli',(req,res)=>{
 //////////////////////////////////////////////////////////////////////////
 const routers = require('./Router');
 app.use("/mydata" , routers)
-app.listen(3000,()=>{
-    console.log("m listening ur port on 3000");
+
+console.log("PORT " + PORT);
+app.listen(PORT, ()=>{
+    console.log("m listening ur port on PORT || 3000");
 });
 
 
